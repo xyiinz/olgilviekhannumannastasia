@@ -262,41 +262,43 @@ h1 {
 
 /* --- Tambahkan ini di bagian paling bawah css/style.css --- */
 
-/* Wrapper Halaman Utama */
+/* --- Tambahan Sistem Transisi Smooth Tanpa Refresh --- */
+
 .page-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
+    inset: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    overflow-y: auto; /* Memastikan isi menu tetap bisa di-scroll jika layar hp kecil */
 }
 
-/* Keadaan tersembunyi (transparan dan bergeser sedikit ke bawah) */
+/* Mengatur transisi saat disembunyikan */
 .page-wrapper.hidden {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
     pointer-events: none;
-    visibility: hidden;
+    display: none !important;
 }
 
-/* Keadaan aktif tampak di layar */
+/* Mengatur transisi saat aktif */
 .page-wrapper.active {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
-    visibility: visible;
+    display: flex;
 }
 
-/* Modifikasi .container agar fleksibel di dalam wrapper baru */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Menyesuaikan app-container agar menyatu sempurna dengan struktur layout */
+#app-container {
     width: 100%;
-    min-height: auto;
+    max-width: 450px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
 }
