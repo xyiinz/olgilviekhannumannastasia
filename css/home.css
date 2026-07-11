@@ -5,25 +5,32 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* Memastikan elemen paling luar juga berwarna hitam agar tidak bocor menjadi putih */
+html {
+    background-color: #000000;
+}
+
 body {
     min-height: 100vh;
-    background: radial-gradient(circle at top, #1a1508 0%, #080808 100%);
+    /* Diubah ke pure black (#000000) di bagian luar dengan gradasi emas gelap di tengah atas */
+    background: radial-gradient(circle at top, #141006 0%, #000000 70%, #000000 100%) !important;
+    background-color: #000000; 
     color: white;
     padding: 40px 25px;
     overflow-x: hidden;
     position: relative;
 }
 
-/* Latar belakang bintang bergerak diagonal */
+/* Latar belakang bintang bergerak diagonal (DIRETAK KEMBALI AGAR LEBIH KONTRAS) */
 .stars {
     position: fixed;
     inset: 0;
     background-image: 
         radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 1px, transparent 1.5px),
-        radial-gradient(circle at center, rgba(212, 175, 55, 0.4) 1.5px, transparent 2px);
+        radial-gradient(circle at center, rgba(212, 175, 55, 0.5) 1.5px, transparent 2px); /* Menaikkan opacity emas sedikit */
     background-size: 40px 40px, 60px 60px;
     background-position: 0 0, 20px 20px;
-    opacity: 0.3;
+    opacity: 0.5; /* Dinaikkan dari 0.3 ke 0.5 agar bintang lebih terlihat jelas di background hitam */
     animation: starsMove 60s linear infinite;
     z-index: -1;
 }
@@ -93,7 +100,7 @@ h1 {
     -webkit-backdrop-filter: blur(20px);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Shadow diperkuat karena background sekarang hitam pekat */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     animation: fadeUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1) backwards;
 }
