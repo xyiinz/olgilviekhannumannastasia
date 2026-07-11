@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olgilvie Khannum Annastasia ❤️</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -28,26 +28,35 @@
     </section>
 
     <section id="homePage" class="page-wrapper hidden">
-        <main class="container">
-            <div class="menu">
-                <div class="menu-card">
-                    <div>💌</div>
-                    <span>Surat</span>
+        <div id="app-container">
+            <header class="profile-section">
+                <img src="images/latar.jpeg" class="profile" alt="Foto Profil">
+                <h1>Welcome Sayang</h1>
+                <p>Tap menu nya berurutan ya sayang</p>
+            </header>
+
+            <section class="menu">
+                <div class="menu-card" onclick="loadPage('message.html')">
+                    <div>❤️</div>
+                    <span>Pesan</span>
                 </div>
-                <div class="menu-card">
+
+                <div class="menu-card" onclick="loadPage('gallery.html')">
                     <div>📸</div>
-                    <span>Galeri</span>
+                    <span>Gallery</span>
                 </div>
-                <div class="menu-card">
-                    <div>⏳</div>
-                    <span>Memori</span>
+
+                <div class="menu-card" onclick="loadPage('reasons.html')">
+                    <div>💌</div>
+                    <span>Reasons</span>
                 </div>
-                <div class="menu-card surprise">
+
+                <div class="menu-card surprise" onclick="loadPage('surprise.html')">
                     <div>🎁</div>
-                    <span>Kejutan Spesial</span>
+                    <span>Penutup</span>
                 </div>
-            </div>
-        </main>
+            </section>
+        </div>
     </section>
 
     <audio id="bgMusic" loop>
@@ -55,5 +64,6 @@
     </audio>
 
     <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
