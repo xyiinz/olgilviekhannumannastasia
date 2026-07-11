@@ -1,7 +1,9 @@
 const button = document.getElementById("enterBtn");
 const music = document.getElementById("bgMusic");
+const landingPage = document.getElementById("landingPage");
+const homePage = document.getElementById("homePage");
 
-// 1. EVENT TOMBOL MASUK
+// 1. EVENT TOMBOL MASUK (TANPA REFRESH)
 if (button) {
     button.onclick = () => {
         // Mulai musik
@@ -13,14 +15,18 @@ if (button) {
         // Efek semburat hati di tengah layar saat masuk
         createHeartsCenter();
 
-        // Efek transisi halaman halus
-        const container = document.querySelector(".container");
-        if (container) container.classList.add("fade-out");
+        // Proses transisi antar halaman (Smooth SPA Effect)
+        if (landingPage && homePage) {
+            landingPage.classList.remove("active");
+            landingPage.classList.add("hidden");
 
-        setTimeout(() => {
-            sessionStorage.setItem("musicPlaying", "true");
-            window.location.href = "home.html";
-        }, 1200);
+            // Beri sedikit jeda waktu agar animasi hilangnya landing page terasa pas
+            setTimeout(() => {
+                homePage.classList.remove("hidden");
+                homePage.classList.add("active");
+                sessionStorage.setItem("musicPlaying", "true");
+            }, 400); 
+        }
     };
 }
 
@@ -32,7 +38,6 @@ function createHeartsCenter() {
         particle.classList.add('heart-particle');
         particle.innerText = hearts[Math.floor(Math.random() * hearts.length)];
         
-        // Posisikan di tengah layar
         particle.style.left = '50%';
         particle.style.top = '50%';
         
@@ -52,7 +57,6 @@ function createHeartsCenter() {
 
 // 2. EFEK KLIK/TAP SEMBURAT HATI SECARA GLOBAL
 document.addEventListener('click', (e) => {
-    // Abaikan jika yang diklik adalah tombol enter agar tidak bentrok arah animasinya
     if (e.target.id === 'enterBtn') return;
 
     const hearts = ['❤️', '💖', '✨', '💕', '🌸'];
@@ -79,7 +83,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// 3. EFEK TILT MAGNETIK KARTU MENU (Hanya berjalan di home.html)
+// 3. EFEK TILT MAGNETIK KARTU MENU
 const cards = document.querySelectorAll('.menu-card');
 if (cards.length > 0) {
     cards.forEach(card => {
