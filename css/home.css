@@ -11,10 +11,9 @@ html {
 }
 
 body {
-    min-height: 100vh;
-    /* Diubah ke pure black (#000000) di bagian luar dengan gradasi emas gelap di tengah atas */
-    background: radial-gradient(circle at top, #141006 0%, #000000 70%, #000000 100%) !important;
-    background-color: #000000; 
+    min-height:100vh;
+    background:#000 !important;
+    background-color:#000 !important;
     color: white;
     padding: 40px 25px;
     overflow-x: hidden;
@@ -23,8 +22,8 @@ body {
 
 /* Latar belakang bintang bergerak diagonal (DIRETAK KEMBALI AGAR LEBIH KONTRAS) */
 .stars {
-    position: fixed;
-    inset: 0;
+    position:fixed;
+    inset:0;
     background-image: 
         radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 1px, transparent 1.5px),
         radial-gradient(circle at center, rgba(212, 175, 55, 0.5) 1.5px, transparent 2px); /* Menaikkan opacity emas sedikit */
@@ -32,7 +31,12 @@ body {
     background-position: 0 0, 20px 20px;
     opacity: 0.5; /* Dinaikkan dari 0.3 ke 0.5 agar bintang lebih terlihat jelas di background hitam */
     animation: starsMove 60s linear infinite;
-    z-index: -1;
+    z-index: 0;
+}
+
+body>*{
+    position:relative;
+    z-index:1;
 }
 
 /* Wrapper Utama Aplikasi (SPA) */
