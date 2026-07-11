@@ -259,3 +259,44 @@ h1 {
     .menu-card div { font-size: 36px; }
     h1 { font-size: 46px; }
 }
+
+/* --- Tambahkan ini di bagian paling bawah css/style.css --- */
+
+/* Wrapper Halaman Utama */
+.page-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Keadaan tersembunyi (transparan dan bergeser sedikit ke bawah) */
+.page-wrapper.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Keadaan aktif tampak di layar */
+.page-wrapper.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+}
+
+/* Modifikasi .container agar fleksibel di dalam wrapper baru */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: auto;
+}
