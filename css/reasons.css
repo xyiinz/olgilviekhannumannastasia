@@ -1,0 +1,206 @@
+/* ==========================================
+   1. RESET & BASE STYLE
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #080808;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 35px 35px;
+    opacity: .15;
+    z-index: -1;
+}
+
+.page {
+    padding: 25px 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+/* ==========================================
+   2. BUTTON KEMBALI LUXURY
+   ========================================== */
+.back {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #D4AF37;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back:hover {
+    background: #D4AF37;
+    color: #080808;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    transform: translateX(-3px);
+}
+
+.back:active {
+    transform: scale(0.95);
+}
+
+/* ==========================================
+   3. HEADER SECTIONS
+   ========================================== */
+header {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: 50px;
+    color: #D4AF37;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+header p {
+    font-size: 14px;
+    opacity: .7;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+/* ==========================================
+   4. INTERACTIVE REASON CARD
+   ========================================== */
+.card-container {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.love-card {
+    width: 100%;
+    max-width: 380px;
+    height: 250px;
+    background: rgba(255, 255, 255, .03);
+    border-radius: 28px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.number {
+    font-size: 42px;
+    color: #D4AF37;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+#reason {
+    line-height: 1.8;
+    font-size: 15px;
+    font-weight: 300;
+    color: #f5f5f5;
+}
+
+/* ==========================================
+   5. BUTTON NEXT
+   ========================================== */
+.next {
+    display: block;
+    margin: 20px auto;
+    background: transparent;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    padding: 14px 35px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.next:hover {
+    background: #D4AF37;
+    color: #080808;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    transform: scale(1.03);
+}
+
+.next:active {
+    transform: scale(0.97);
+}
+
+/* ==========================================
+   6. ANIMATIONS & EFEK PARTIKEL
+   ========================================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.heart-particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    z-index: 9999;
+    animation: popOut 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popOut {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.4) rotate(var(--r));
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   7. RESPONSIVITAS MOBILE
+   ========================================== */
+@media (max-width: 415px) {
+    header h1 {
+        font-size: 40px;
+    }
+    .love-card {
+        height: 230px;
+        padding: 20px;
+    }
+    #reason {
+        font-size: 14px;
+    }
+}

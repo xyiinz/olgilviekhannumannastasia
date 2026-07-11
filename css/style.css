@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a1508 0%, #080808 100%);
+    color: white;
+    padding: 40px 25px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Latar belakang bintang bergerak diagonal */
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 1px, transparent 1.5px),
+        radial-gradient(circle at center, rgba(212, 175, 55, 0.4) 1.5px, transparent 2px);
+    background-size: 40px 40px, 60px 60px;
+    background-position: 0 0, 20px 20px;
+    opacity: 0.3;
+    animation: starsMove 60s linear infinite;
+    z-index: -1;
+}
+
+/* Container & Glassmorphism Landing Page */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 28px;
+    padding: 35px 25px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Profile Section Styling */
+.profile-section {
+    text-align: center;
+    animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.profile {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #D4AF37;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    margin: 20px 0;
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: 55px;
+    margin-top: 5px;
+    color: #D4AF37;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.profile-section p {
+    opacity: 0.8;
+    font-size: 14px;
+    margin-bottom: 25px;
+    font-weight: 300;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Button Luxury Style */
+#enterBtn {
+    background: linear-gradient(135deg, #1a1508 0%, #2a200a 100%);
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    padding: 12px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+}
+
+#enterBtn:hover {
+    background: #D4AF37;
+    color: #080808;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+}
+
+#enterBtn:active {
+    transform: scale(0.98);
+}
+
+/* Grid Menu Wrapper (Untuk Home Page) */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 45px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Base Card Styling */
+.menu-card {
+    height: 150px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 28px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    animation: fadeUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1) backwards;
+}
+
+.menu-card:nth-child(1) { animation-delay: 0.2s; }
+.menu-card:nth-child(2) { animation-delay: 0.3s; }
+.menu-card:nth-child(3) { animation-delay: 0.4s; }
+.menu-card:nth-child(4) { animation-delay: 0.5s; }
+
+.menu-card div {
+    font-size: 42px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+}
+
+.menu-card span {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+    color: #ffffff;
+    transition: color 0.3s, letter-spacing 0.3s;
+}
+
+.menu-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transform: rotate(30deg);
+    transition: 0.5s;
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.menu-card:hover::before {
+    left: 150%;
+    transition: 0.7s ease-in-out;
+}
+
+.menu-card:hover div {
+    transform: scale(1.25) translateY(-5px);
+}
+
+.menu-card:hover span {
+    color: #D4AF37;
+    letter-spacing: 1px;
+}
+
+.menu-card:active {
+    transform: scale(0.95);
+}
+
+.surprise {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(212,175,55,0.05) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.surprise:hover {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(212,175,55,0.1) 100%);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+}
+
+/* --- KEYFRAMES ANIMASI --- */
+@keyframes starsMove {
+    from { background-position: 0 0, 20px 20px; }
+    to { background-position: 500px 1000px, 520px 1020px; }
+}
+
+@keyframes floatImage {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- EFEK PARTIKEL HATI INTERAKTIF --- */
+.heart-particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    z-index: 9999;
+    animation: popOut 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popOut {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.4) rotate(var(--r));
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    opacity: 0 !important;
+    transform: translateY(-20px) scale(0.95) !important;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@media (max-width: 400px) {
+    .menu-card { height: 135px; }
+    .menu-card div { font-size: 36px; }
+    h1 { font-size: 46px; }
+}

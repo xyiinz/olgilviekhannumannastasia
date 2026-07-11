@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #1a1508 0%, #080808 100%);
+    color: white;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Latar belakang bintang bergerak diagonal (Konsisten) */
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 1px, transparent 1.5px),
+        radial-gradient(circle at center, rgba(212, 175, 55, 0.4) 1.5px, transparent 2px);
+    background-size: 40px 40px, 60px 60px;
+    background-position: 0 0, 20px 20px;
+    opacity: 0.3;
+    animation: moveStars 60s linear infinite;
+    z-index: -1;
+}
+
+.page {
+    height: 100vh;
+    min-height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+    position: relative;
+}
+
+/* Tombol Kembali Minimalis Elegan */
+.back {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #D4AF37;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.back:hover {
+    background: #D4AF37;
+    color: #080808;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    transform: translateX(-3px);
+}
+
+/* Area Kado Utama */
+#gift {
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animasi Kado Melayang & Menggeliat Lucu */
+.gift-box {
+    font-size: 110px;
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4));
+    animation: floatAndWiggle 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+#gift p {
+    font-size: 15px;
+    font-weight: 300;
+    color: #D4AF37;
+    margin-top: 15px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+#gift:hover {
+    transform: scale(1.1);
+}
+
+#gift:active {
+    transform: scale(0.9);
+}
+
+/* Kontainer Pesan Akhir Modern Glassmorphic */
+#finalMessage {
+    display: none; /* Dikontrol munculnya lewat JavaScript */
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    padding: 10px;
+    animation: scaleFadeIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+#finalMessage h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: 60px;
+    color: #D4AF37;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.glass-message {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 28px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 35px 25px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+#letter {
+    line-height: 1.9;
+    font-size: 14.5px;
+    color: #f0f0f0;
+    font-weight: 300;
+}
+
+/* --- KEYFRAMES ANIMASI --- */
+
+@keyframes moveStars {
+    from { background-position: 0 0, 20px 20px; }
+    to { background-position: 500px 1000px, 520px 1020px; }
+}
+
+/* Gabungan animasi melayang dan bergoyang manis (Cute) */
+@keyframes floatAndWiggle {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(-4deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(4deg);
+    }
+}
+
+/* Efek teks petunjuk berdenyut lembut */
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; transform: scale(1.02); }
+}
+
+/* Efek pesan cinta mekar membal */
+@keyframes scaleFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* --- RESPONSIVITAS MOBILE --- */
+@media (max-width: 415px) {
+    .back {
+        top: 20px;
+        left: 20px;
+        padding: 9px 18px;
+        font-size: 13px;
+    }
+    .gift-box {
+        font-size: 95px;
+    }
+    #gift p {
+        font-size: 13.5px;
+    }
+    #finalMessage h1 {
+        font-size: 48px;
+    }
+    .glass-message {
+        padding: 25px 20px;
+        border-radius: 22px;
+    }
+    #letter {
+        font-size: 13.5px;
+        line-height: 1.8;
+    }
+}
+
+@media (max-width: 340px) {
+    #finalMessage h1 {
+        font-size: 40px;
+    }
+    .gift-box {
+        font-size: 80px;
+    }
+}
+
+/* --- EFEK PARTIKEL HATI INTERAKTIF --- */
+.heart-particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    z-index: 9999;
+    animation: popOut 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popOut {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* Partikel meluncur ke arah acak sesuai variabel JS */
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.4) rotate(var(--r));
+        opacity: 0;
+    }
+}

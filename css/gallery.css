@@ -1,0 +1,232 @@
+/* ==========================================
+   1. RESET & BASE STYLE
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #1a1508 0%, #080808 100%);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 1px, transparent 1.5px),
+        radial-gradient(circle at center, rgba(212, 175, 55, 0.4) 1.5px, transparent 2px);
+    background-size: 40px 40px, 60px 60px;
+    background-position: 0 0, 20px 20px;
+    opacity: 0.3;
+    animation: moveStars 60s linear infinite;
+    z-index: -1;
+}
+
+.page {
+    padding: 25px 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   2. TOMBOL KEMBALI
+   ========================================== */
+.back {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #D4AF37;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back:hover {
+    background: #D4AF37;
+    color: #080808;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    transform: translateX(-3px);
+}
+
+.back:active {
+    transform: scale(0.95);
+}
+
+/* ==========================================
+   3. HEADER
+   ========================================== */
+header {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+header h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: 55px;
+    color: #D4AF37;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+header p {
+    opacity: 0.8;
+    font-size: 13px;
+    font-weight: 300;
+    color: #e0e0e0;
+    margin-top: 5px;
+}
+
+/* ==========================================
+   4. GRID GALLERY RESPONSIVE
+   ========================================== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.photo {
+    height: 190px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    animation: showPhoto 1s cubic-bezier(0.175, 0.885, 0.32, 1.1) backwards;
+}
+
+.gallery .photo:nth-child(1) { animation-delay: 0.1s; }
+.gallery .photo:nth-child(2) { animation-delay: 0.2s; }
+.gallery .photo:nth-child(3) { animation-delay: 0.3s; }
+.gallery .photo:nth-child(4) { animation-delay: 0.4s; }
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.photo:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+}
+
+.photo:hover img {
+    transform: scale(1.08);
+}
+
+.photo:active {
+    transform: scale(0.96);
+}
+
+/* ==========================================
+   5. LIGHTBOX VIEWER LAYAR PENUH
+   ========================================== */
+#viewer {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 20px;
+}
+
+#viewer img {
+    max-width: 95%;
+    max-height: 75vh;
+    border-radius: 24px;
+    border: 2px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+#close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+    color: #D4AF37;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+
+#close:hover {
+    background: rgba(212, 175, 55, 0.2);
+    transform: rotate(90deg);
+}
+
+/* ==========================================
+   6. ANIMASI KEYFRAMES & PARTIKEL
+   ========================================== */
+@keyframes moveStars {
+    from { background-position: 0 0, 20px 20px; }
+    to { background-position: 500px 1000px, 520px 1020px; }
+}
+
+@keyframes showPhoto {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.heart-particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    z-index: 9999;
+    animation: popOut 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popOut {
+    0% { transform: translate(-50%, -50%) scale(0.5) rotate(0deg); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.4) rotate(var(--r)); opacity: 0; }
+}
+
+/* ==========================================
+   7. MEDIA QUERIES
+   ========================================== */
+@media (max-width: 415px) {
+    header h1 { font-size: 46px; }
+    .gallery { gap: 12px; }
+    .photo { height: 165px; border-radius: 16px; }
+    #close { top: 20px; right: 20px; font-size: 35px; width: 44px; height: 44px; }
+}
+
+@media (max-width: 340px) {
+    header h1 { font-size: 38px; }
+    .gallery { grid-template-columns: 1fr; }
+    .photo { height: 200px; }
+}
